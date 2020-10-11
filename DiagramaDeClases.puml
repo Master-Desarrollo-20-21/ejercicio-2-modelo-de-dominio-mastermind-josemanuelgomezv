@@ -1,0 +1,30 @@
+@startuml
+Mastermind *--> Turn
+Turn --> "2" Player
+Mastermind *--> "2" Player
+Mastermind *-->  "1" Board
+
+Player o--> Goal
+Board *--> "2" Stock
+Board *--> "1" Shield
+Board *--> "1" Ranking
+Ranking *--> "2" Players
+Hole <|--> "12x5" HoleTypeA
+Hole <|--> "12x5" HoleTypeB
+Hole o--> "0..1" Piece
+Board *--> "24x5" Hole
+Hole *--> Coordinate
+
+Shield *--> "1" SecretCode
+Stock  *--> "256" Piece
+
+Piece *--> Color
+Piece <|--> "192" PieceTypeA
+Piece <|--> "60" PieceTypeB
+Piece <|--> "4" PieceTypeC
+
+Action ..> "0..5" Piece
+Action <|--> PutAction
+Goal ..> "0..5" PutAction
+Action ..> Hole
+@enduml
